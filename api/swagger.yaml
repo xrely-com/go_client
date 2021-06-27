@@ -1,0 +1,423 @@
+---
+swagger: "2.0"
+info:
+  description: "API Documentation for XRELY platform"
+  version: "1.0.0"
+  title: "XRELY"
+  termsOfService: "http://www.xrely.com/terms/"
+  contact:
+    email: "contact@xrely.com"
+host: "api.xrely.com"
+basePath: "/v1"
+tags:
+- name: "search"
+  description: "Everything About Search"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+- name: "collect"
+  description: "Collects Behavioral Data"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+- name: "index"
+  description: "Everything About Account Index"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+schemes:
+- "https"
+- "http"
+paths:
+  /search:
+    get:
+      tags:
+      - "search"
+      summary: "Get autocomplete phrase or keywords for your query"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "q"
+        in: "query"
+        description: "Search Term or Keyword"
+        required: true
+        type: "string"
+        x-exportParamName: "Q"
+      - name: "ak"
+        in: "query"
+        description: "Account Key"
+        required: true
+        type: "string"
+        x-exportParamName: "Ak"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+    post:
+      tags:
+      - "search"
+      summary: "Provides relevant result for your query"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Search query term or keyword"
+        required: true
+        schema:
+          $ref: "#/definitions/SearchRequest"
+        x-exportParamName: "Body"
+      responses:
+        "200":
+          description: "Response"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+  /collect/info:
+    get:
+      tags:
+      - "collect"
+      summary: "collects information related to device"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "uid"
+        in: "query"
+        description: "Unique Id"
+        required: false
+        type: "string"
+        x-exportParamName: "Uid"
+        x-optionalDataType: "String"
+      - name: "k"
+        in: "query"
+        description: "key"
+        required: false
+        type: "string"
+        x-exportParamName: "K"
+        x-optionalDataType: "String"
+      - name: "aid"
+        in: "query"
+        description: "Account Id"
+        required: false
+        type: "string"
+        x-exportParamName: "Aid"
+        x-optionalDataType: "String"
+      - name: "aV"
+        in: "query"
+        description: "App Version"
+        required: false
+        type: "string"
+        x-exportParamName: "AV"
+        x-optionalDataType: "String"
+      - name: "netwk"
+        in: "query"
+        description: "Network"
+        required: false
+        type: "string"
+        x-exportParamName: "Netwk"
+        x-optionalDataType: "String"
+      - name: "os"
+        in: "query"
+        description: "Operating System"
+        required: false
+        type: "string"
+        x-exportParamName: "Os"
+        x-optionalDataType: "String"
+      - name: "osV"
+        in: "query"
+        description: "Oerating System Version"
+        required: false
+        type: "string"
+        x-exportParamName: "OsV"
+        x-optionalDataType: "String"
+      - name: "url"
+        in: "query"
+        description: "Current url / Deep link"
+        required: false
+        type: "string"
+        x-exportParamName: "Url"
+        x-optionalDataType: "String"
+      - name: "ref"
+        in: "query"
+        description: "Referrer"
+        required: false
+        type: "string"
+        x-exportParamName: "Ref"
+        x-optionalDataType: "String"
+      - name: "uagnt"
+        in: "query"
+        description: "User Agent / App Signature"
+        required: false
+        type: "string"
+        x-exportParamName: "Uagnt"
+        x-optionalDataType: "String"
+      - name: "udid"
+        in: "query"
+        description: "Unique Device ID"
+        required: false
+        type: "string"
+        x-exportParamName: "Udid"
+        x-optionalDataType: "String"
+      - name: "imei"
+        in: "query"
+        description: "Device IMEI Number"
+        required: false
+        type: "string"
+        x-exportParamName: "Imei"
+        x-optionalDataType: "String"
+      - name: "domain"
+        in: "query"
+        description: "Domain Name"
+        required: false
+        type: "string"
+        x-exportParamName: "Domain"
+        x-optionalDataType: "String"
+      - name: "netCrr"
+        in: "query"
+        description: "Network Carrier"
+        required: false
+        type: "string"
+        x-exportParamName: "NetCrr"
+        x-optionalDataType: "String"
+      - name: "platform"
+        in: "query"
+        description: "Mobile/Web"
+        required: false
+        type: "string"
+        x-exportParamName: "Platform"
+        x-optionalDataType: "String"
+      - name: "dM"
+        in: "query"
+        description: "Device Model"
+        required: false
+        type: "string"
+        x-exportParamName: "DM"
+        x-optionalDataType: "String"
+      - name: "dMgf"
+        in: "query"
+        description: "Device Manufacturer"
+        required: false
+        type: "string"
+        x-exportParamName: "DMgf"
+        x-optionalDataType: "String"
+      - name: "email"
+        in: "query"
+        description: "Email Id"
+        required: false
+        type: "string"
+        x-exportParamName: "Email"
+        x-optionalDataType: "String"
+      - name: "mobile"
+        in: "query"
+        description: "Mobile Number"
+        required: false
+        type: "string"
+        x-exportParamName: "Mobile"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+  /collect/activity:
+    get:
+      tags:
+      - "collect"
+      summary: "collects information related to user activity"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "k"
+        in: "query"
+        description: "key"
+        required: false
+        type: "string"
+        x-exportParamName: "K"
+        x-optionalDataType: "String"
+      - name: "uid"
+        in: "query"
+        description: "Unique Id"
+        required: false
+        type: "string"
+        x-exportParamName: "Uid"
+        x-optionalDataType: "String"
+      - name: "domain"
+        in: "query"
+        description: "Domain Name"
+        required: false
+        type: "string"
+        x-exportParamName: "Domain"
+        x-optionalDataType: "String"
+      - name: "entId"
+        in: "query"
+        description: "Entity Id"
+        required: false
+        type: "string"
+        x-exportParamName: "EntId"
+        x-optionalDataType: "String"
+      - name: "entName"
+        in: "query"
+        description: "Entity Name"
+        required: false
+        type: "string"
+        x-exportParamName: "EntName"
+        x-optionalDataType: "String"
+      - name: "keyword"
+        in: "query"
+        description: "Keyword"
+        required: false
+        type: "string"
+        x-exportParamName: "Keyword"
+        x-optionalDataType: "String"
+      - name: "dPos"
+        in: "query"
+        description: "Display Position"
+        required: false
+        type: "string"
+        x-exportParamName: "DPos"
+        x-optionalDataType: "String"
+      - name: "ref"
+        in: "query"
+        description: "Referrer"
+        required: false
+        type: "string"
+        x-exportParamName: "Ref"
+        x-optionalDataType: "String"
+      - name: "tag"
+        in: "query"
+        description: "Listing Tags"
+        required: false
+        type: "string"
+        x-exportParamName: "Tag"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+  /index:
+    post:
+      tags:
+      - "index"
+      summary: "Insert data to your index bucket"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/IndexApiResponse"
+definitions:
+  SearchRequest:
+    type: "object"
+    properties:
+      ak:
+        type: "string"
+        description: "Account Key"
+      q:
+        type: "string"
+        description: "Query Term"
+      size:
+        type: "string"
+        description: "Number of results"
+      aggField:
+        type: "array"
+        items:
+          $ref: "#/definitions/AggrigationField"
+      filterField:
+        type: "array"
+        items:
+          $ref: "#/definitions/FilterField"
+    example:
+      q: "q"
+      size: "size"
+      ak: "ak"
+      aggField:
+      - field: "field"
+        type: "type"
+      - field: "field"
+        type: "type"
+      filterField:
+      - filter: "filter"
+        field: "field"
+      - filter: "filter"
+        field: "field"
+  AggrigationField:
+    type: "object"
+    properties:
+      field:
+        type: "string"
+      type:
+        type: "string"
+    example:
+      field: "field"
+      type: "type"
+  FilterField:
+    type: "object"
+    properties:
+      field:
+        type: "string"
+      filter:
+        type: "string"
+    example:
+      filter: "filter"
+      field: "field"
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      data:
+        type: "string"
+      message:
+        type: "string"
+    example:
+      code: 0
+      data: "data"
+      message: "message"
+  IndexMessage:
+    type: "object"
+    properties:
+      indexed:
+        type: "boolean"
+      message:
+        type: "string"
+    example:
+      indexed: true
+      message: "message"
+  IndexApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+      data:
+        $ref: "#/definitions/IndexMessage"
+    example:
+      code: 0
+      data:
+        indexed: true
+        message: "message"
+      message: "message"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
