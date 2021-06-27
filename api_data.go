@@ -35,7 +35,7 @@ DataApiService Delete data from your account bucket
 */
 
 type DataStoreDeleteOpts struct { 
-	Body optional.Interface
+	//Body optional.Interface
 }
 
 func (a *DataApiService) DataStoreDelete(ctx context.Context, localVarOptionals *DataStoreDeleteOpts) (DataApiResponse, *http.Response, error) {
@@ -138,7 +138,7 @@ DataApiService Insert data to your account bucket
 */
 
 type DataStorePostOpts struct { 
-	Body optional.Interface
+	//Body optional.Interface
 }
 
 func (a *DataApiService) DataStorePost(ctx context.Context, localVarOptionals *DataStorePostOpts) (DataApiResponse, *http.Response, error) {
